@@ -1,4 +1,4 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
 
 // Routes
@@ -7,4 +7,4 @@ router.get("/", (req, res) => {
 });
 
 // Exporting the Routes of main website
-module.exports = router;
+export { router as mainRoute };

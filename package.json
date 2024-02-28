@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "A Personal Blog Website Made using NodeJs and MongoDB ",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "app.js",
-    "dev": "nodemonapp.js"
+    "dev": "nodemon app.js"
   },
   "author": "Rajat Gupta",
   "license": "ISC",

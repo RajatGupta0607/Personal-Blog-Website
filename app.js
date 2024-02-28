@@ -1,8 +1,8 @@
-const express = require("express");
-const env = require("dotenv");
-const expressLayout = require("express-ejs-layouts");
+import express from "express";
+import env from "dotenv";
+import expressLayout from "express-ejs-layouts";
 // Importing Main Website Routes
-const main = require("./server/routes/main");
+import { mainRoute } from "./server/routes/main.js";
 env.config();
 
 const app = express();
@@ -16,7 +16,7 @@ app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
 
 // Using the Main Website Routes
-app.use("/", main);
+app.use("/", mainRoute);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
