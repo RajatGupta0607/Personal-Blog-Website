@@ -6,4 +6,5 @@ router.get("/", (req, res) => {
   res.send("Hello World");
 });
 
+// Exporting the Routes of main website
 module.exports = router;
