@@ -54,6 +54,7 @@ h3 {
   max-width: 982px;
   margin: 0 auto;
   padding: 10px 10px;
+  position: relative;
 }
 
 .main {
@@ -80,6 +81,11 @@ header .img {
 header .img img {
   height: 50px;
   width: 50px;
+  cursor: pointer;
+}
+
+header .img img:hover {
+  content: url("/images/logo2.png");
 }
 
 .navbar {
@@ -117,7 +123,7 @@ header .img img {
 }
 
 .searchBtn svg {
-  height: 15px;
+  height: 20px;
 }
 
 .searchBtn:hover {
@@ -234,4 +240,51 @@ footer {
   margin: 3rem auto;
   text-align: center;
   color: var(--secondary-text-color);
+}
+
+/* Search Bar */
+
+.searchBar {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: var(--primary-text-color);
+  height: 3rem;
+  padding: 2rem 0;
+  position: absolute;
+  transform: scale(0.1);
+  transition: all 0.5s;
+  visibility: hidden;
+}
+
+.searchBar.active {
+  transform: scale(1) translateX(10%);
+  visibility: visible;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#searchInput {
+  border: none;
+  background-color: var(--background-color);
+  font-size: 1.5rem;
+  padding: 13px;
+  width: 70%;
+  outline: none;
+}
+
+#closeBtn {
+  font-size: 1.2rem;
+  background-color: var(--primary-text-color);
+  border: none;
+  color: var(--background-color);
+  padding: 10px;
+  cursor: pointer;
 }
