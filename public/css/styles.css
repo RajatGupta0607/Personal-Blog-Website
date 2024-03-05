@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* border: 1px solid black; */
 }
 
 :root {
@@ -288,4 +289,44 @@ form {
   color: var(--background-color);
   padding: 10px;
   cursor: pointer;
+}
+
+/* About */
+
+.about {
+  width: 78%;
+  margin: 10px auto;
+  padding: 20px;
+}
+
+.about h2 {
+  margin-bottom: 20px;
+}
+
+.about p {
+  margin-bottom: 20px;
+}
+
+.dev_profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.dev_profile img {
+  height: 100px;
+  width: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.dev_profile span {
+  font-size: 1.5rem;
+}
+
+.about_developer a {
+  color: var(--secondary-text-color);
 }
