@@ -1,14 +1,21 @@
-import express from "express";
 import env from "dotenv";
+env.config();
+
+import express from "express";
 import expressLayout from "express-ejs-layouts";
 // Importing Main Website Routes
 import { mainRoute } from "./server/routes/main.js";
-env.config();
+// Connect to PostgreSQL Database
+import { db } from "./server/config/db.js";
+import bodyParser from "body-parser";
 
 const app = express();
-const PORT = 3000 || process.env.PORT;
+const PORT = 3000;
+
+db.connect();
 
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Templating Engine
 app.use(expressLayout);
