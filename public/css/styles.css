@@ -330,3 +330,9 @@ form {
 .about_developer a {
   color: var(--secondary-text-color);
 }
+
+/* Contact */
+
+#contact_links h2 {
+  margin-bottom: 20px;
+}

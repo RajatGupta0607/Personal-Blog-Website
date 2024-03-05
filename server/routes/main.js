@@ -11,5 +11,9 @@ router.get("/about", (req, res) => {
   res.render("about");
 });
 
+router.get("/contact", (req, res) => {
+  res.render("contact");
+});
+
 // Exporting the Routes of main website
 export { router as mainRoute };
