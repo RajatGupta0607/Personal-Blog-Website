@@ -9,9 +9,7 @@ router.get("/", async (req, res) => {
   try {
     const perPage = 5; // Number of items to display on each page
     let page = req.query.page || 1;
-    const result = (
-      await db.query("SELECT * FROM articles ORDER BY createdat DESC")
-    ).rows;
+    const result = await db`SELECT * FROM articles ORDER BY createdat DESC`;
     let data = result.slice(perPage * page - perPage, perPage * page);
 
     const count = result.length;

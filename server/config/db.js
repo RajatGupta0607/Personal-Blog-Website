@@ -1,8 +1,8 @@
-import pg from "pg";
+import pg from "postgres";
 import env from "dotenv";
 env.config();
 
-const db = new pg.Pool({
+const db = pg({
   user: process.env.PG_USER,
   host: process.env.PG_HOST,
   database: process.env.PG_DATABASE,
