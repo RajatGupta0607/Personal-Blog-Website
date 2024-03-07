@@ -18,24 +18,14 @@
 <section class="articles">
   <h2>Latest Posts</h2>
   <ul class="article-ul">
-    <a href="/article">
+    <% data.forEach(article => { %>
+    <a href="/article/<%= article.art_id %>">
       <li>
-        <span class="title">Title</span>
-        <span class="date">Date</span>
+        <span class="title"><%= article.title %></span>
+        <span class="date"><%= article.createdat %></span>
       </li>
     </a>
-    <a href="#">
-      <li>
-        <span class="title">Title</span>
-        <span class="date">Date</span>
-      </li>
-    </a>
-    <a href="#">
-      <li>
-        <span class="title">Title</span>
-        <span class="date">Date</span>
-      </li>
-    </a>
+    <% }) %>
   </ul>
   <a href="#" class="pagination">View Older Posts &#10148;</a>
 </section>
