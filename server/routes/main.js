@@ -17,11 +17,14 @@ router.get("/", async (req, res) => {
     const count = result.length;
     const nextPage = parseInt(page) + 1;
     const hasNextPage = Math.ceil(count / perPage) >= nextPage;
+    const previousPage = parseInt(page) - 1;
+    const haspreviousPage = page > 1;
 
     res.render("index", {
       data,
       currentPage: page,
       nextPage: hasNextPage ? nextPage : null,
+      previousPage: haspreviousPage ? previousPage : null,
     });
   } catch (error) {
     console.log(error);

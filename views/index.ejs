@@ -27,9 +27,15 @@
     </a>
     <% }) %>
   </ul>
-  <% if (nextPage !== null) { %>
-  <a href="?page=<%= nextPage %>" class="pagination"
-    >View Older Posts &#10148;</a
-  >
-  <% } %>
+  <div class="pagination_container">
+    <% if (previousPage !== null) { %>
+    <a href="?page=<%= previousPage %>" class="pagination"
+      >&#x2B9C; View Newer Posts</a
+    >
+    <% } %> <% if (nextPage !== null) { %>
+    <a href="?page=<%= nextPage %>" class="pagination"
+      >View Older Posts &#x2B9E;</a
+    >
+    <% } %>
+  </div>
 </section>

@@ -222,11 +222,14 @@ header .img img:hover {
   color: var(--secondary-text-color);
 }
 
+.pagination_container {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
 .pagination {
   margin: 1.5rem 0;
-  display: flex;
-  justify-content: end;
-  width: 100%;
   font-size: 1.3rem;
   color: var(--light-red);
 }
