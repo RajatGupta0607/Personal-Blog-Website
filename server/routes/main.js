@@ -7,8 +7,22 @@ const router = express.Router();
 // Home Page Route
 router.get("/", async (req, res) => {
   try {
-    const data = (await db.query("SELECT * FROM articles")).rows;
-    res.render("index", { data });
+    const perPage = 5; // Number of items to display on each page
+    let page = req.query.page || 1;
+    const result = (
+      await db.query("SELECT * FROM articles ORDER BY createdat DESC")
+    ).rows;
+    let data = result.slice(perPage * page - perPage, perPage * page);
+
+    const count = result.length;
+    const nextPage = parseInt(page) + 1;
+    const hasNextPage = Math.ceil(count / perPage) >= nextPage;
+
+    res.render("index", {
+      data,
+      currentPage: page,
+      nextPage: hasNextPage ? nextPage : null,
+    });
   } catch (error) {
     console.log(error);
   }
