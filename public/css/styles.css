@@ -339,3 +339,29 @@ form {
 #contact_links h2 {
   margin-bottom: 20px;
 }
+
+/* Post/Article */
+
+.post {
+  width: 90%;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.post a:hover {
+  color: var(--secondary-text-color);
+}
+
+.post > h2 {
+  margin: 20px 0 10px 0;
+  text-align: justify;
+}
+
+.post > p {
+  font-weight: 700;
+  margin: 10px 0 20px 0;
+}
+
+.post > article {
+  text-align: justify;
+}

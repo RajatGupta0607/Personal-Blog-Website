@@ -39,8 +39,14 @@ router.get("/contact", (req, res) => {
   res.render("contact");
 });
 
-router.get("/article/:id", (req, res) => {
-  res.render("article");
+// Article Page Route
+router.get("/article/:id", async (req, res) => {
+  try {
+    let art_id = req.params.id;
+    const result = await db`SELECT * FROM articles WHERE art_id = ${art_id}`;
+    const post = result[0];
+    res.render("article", { post });
+  } catch (error) {}
 });
 
 // Exporting the Routes of main website
