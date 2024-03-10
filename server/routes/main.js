@@ -49,5 +49,18 @@ router.get("/article/:id", async (req, res) => {
   } catch (error) {}
 });
 
+// Search Page Route
+router.post("/search", async (req, res) => {
+  try {
+    let searchTerm = req.body.searchTerm;
+    searchTerm = `%${searchTerm}%`;
+    const data =
+      await db`SELECT * FROM articles WHERE title iLIKE ${searchTerm} OR body iLIKE ${searchTerm}`;
+    res.render("search", { data });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // Exporting the Routes of main website
 export { router as mainRoute };
