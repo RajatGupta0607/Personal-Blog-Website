@@ -34,7 +34,17 @@ router.get("/admin", (req, res) => {
 
 // Dashboard Page Route
 router.get("/dashboard", authMiddleware, async (req, res) => {
-  res.render("admin/dashboard");
+  try {
+    const data = await db`SELECT * FROM articles ORDER BY createdat DESC`;
+    res.render("admin/dashboard", { data, layout: adminLayout });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Add Article GET Page Route
+router.get("/add-article", authMiddleware, (req, res) => {
+  res.render("admin/add-article", { layout: adminLayout });
 });
 
 // Admin Login Check Page Route
@@ -52,6 +62,18 @@ router.post("/admin", async (req, res) => {
     const token = jwt.sign({ userId: user[0].id }, jwtSecret);
     res.cookie("token", token, { httpOnly: true });
 
+    res.redirect("/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Add Article POST Route
+router.post("/add-article", async (req, res) => {
+  try {
+    const { title, body } = req.body;
+    const date = new Date();
+    await db`INSERT INTO articles(title, body, createdat, updatedat) VALUES (${title},${body},${date.toDateString()},${date.toDateString()})`;
     res.redirect("/dashboard");
   } catch (error) {
     console.log(error);

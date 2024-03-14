@@ -1,1 +1,20 @@
-Dashboard
+<div class="admin-title">
+  <h2>Posts</h2>
+  <a href="/add-article">+ Add New</a>
+</div>
+
+<ul class="admin-posts">
+  <% data.forEach(article => { %>
+  <li>
+    <a href="/article/<%= article.art_id %>" target="_blank">
+      <%= article.title %> &nearr;</a
+    >
+    <div class="admin-post-controls">
+      <a href="/edit-article/<%= article.art_id %>" class="btn">Edit</a>
+      <form action="/delete-article/<%= article.art_id %>" method="post">
+        <input type="submit" value="Delete" class="btn" />
+      </form>
+    </div>
+  </li>
+  <% }) %>
+</ul>

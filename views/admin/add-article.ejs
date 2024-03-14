@@ -1,0 +1,24 @@
+<a href="/dashboard">&#x2B9C; Back</a>
+<div class="admin-title">
+  <h2>New Post</h2>
+</div>
+
+<form action="/add-article" method="POST">
+  <label for="title" class="mar">Title</label>
+  <input
+    type="text"
+    placeholder="Post Title"
+    id="title"
+    name="title"
+    class="login-input mar"
+  />
+  <label for="body" class="mar">Body</label>
+  <textarea
+    id="body"
+    name="body"
+    class="login-input mar"
+    cols="50"
+    rows="10"
+  ></textarea>
+  <input type="submit" value="Add" class="btn" />
+</form>
