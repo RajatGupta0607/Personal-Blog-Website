@@ -47,6 +47,20 @@ router.get("/add-article", authMiddleware, (req, res) => {
   res.render("admin/add-article", { layout: adminLayout });
 });
 
+// Edit Article GET Page Route
+router.get("/edit-article/:id", authMiddleware, async (req, res) => {
+  const art_id = req.params.id;
+  const result = await db`SELECT * FROM articles WHERE art_id = ${art_id}`;
+  const data = result[0];
+  res.render("admin/edit-article", { data, layout: adminLayout });
+});
+
+// Logout Page Get Route
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.redirect("/admin");
+});
+
 // Admin Login Check Page Route
 router.post("/admin", async (req, res) => {
   try {
@@ -78,6 +92,22 @@ router.post("/add-article", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});
+
+// Edit Article PUT Page Route
+router.put("/edit-article/:id", authMiddleware, async (req, res) => {
+  const art_id = req.params.id;
+  const { title, body } = req.body;
+  const date = new Date();
+  await db`UPDATE articles SET title=${title}, body=${body}, updatedat=${date.toDateString()} WHERE art_id = ${art_id}`;
+  res.redirect(`/edit-article/${art_id}`);
+});
+
+// Delete Article PUT Page Route
+router.delete("/delete-article/:id", authMiddleware, async (req, res) => {
+  const art_id = req.params.id;
+  await db`DELETE FROM articles WHERE art_id = ${art_id}`;
+  res.redirect(`/dashboard`);
 });
 
 // // Admin Register Page Route

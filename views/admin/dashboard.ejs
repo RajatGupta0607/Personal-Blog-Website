@@ -11,8 +11,11 @@
     >
     <div class="admin-post-controls">
       <a href="/edit-article/<%= article.art_id %>" class="btn">Edit</a>
-      <form action="/delete-article/<%= article.art_id %>" method="post">
-        <input type="submit" value="Delete" class="btn" />
+      <form
+        action="/delete-article/<%= article.art_id %>?_method=DELETE"
+        method="post"
+      >
+        <input type="submit" value="Delete" class="btn btn-delete" />
       </form>
     </div>
   </li>

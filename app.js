@@ -9,6 +9,8 @@ import { adminRoute } from "./server/routes/admin.js";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import session from "express-session";
+import methodOverride from "method-override";
+import { isActiveRoute } from "./server/helpers/routeHelpers.js";
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +18,7 @@ const PORT = 3000;
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(methodOverride("_method"));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
@@ -31,6 +34,8 @@ app.use(
 app.use(expressLayout);
 app.set("layout", "./layouts/main");
 app.set("view engine", "ejs");
+
+app.locals.isActiveRoute = isActiveRoute;
 
 // Using the Main Website Routes
 app.use("/", mainRoute);

@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* border: 1px solid #10275e; */
 }
 
 :root {
@@ -480,4 +479,27 @@ label.mar {
 
 .mar {
   margin: 15px 0;
+}
+
+/* Edit Article */
+
+.btn-delete {
+  background-color: var(--secondary-text-color);
+}
+
+/* Logout */
+
+#logout {
+  width: fit-content;
+  font-size: 1.4rem;
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+}
+
+#logout:hover {
+  color: var(--secondary-text-color);
+}
+
+.activa {
+  color: var(--secondary-text-color);
 }

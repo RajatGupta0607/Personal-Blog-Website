@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
       currentPage: page,
       nextPage: hasNextPage ? nextPage : null,
       previousPage: haspreviousPage ? previousPage : null,
+      currentRoute: "/",
     });
   } catch (error) {
     console.log(error);
@@ -31,12 +32,12 @@ router.get("/", async (req, res) => {
 
 // About Page Route
 router.get("/about", (req, res) => {
-  res.render("about");
+  res.render("about", { currentRoute: "/about" });
 });
 
 // Contact Page Route
 router.get("/contact", (req, res) => {
-  res.render("contact");
+  res.render("contact", { currentRoute: "/contact" });
 });
 
 // Article Page Route
@@ -45,7 +46,7 @@ router.get("/article/:id", async (req, res) => {
     let art_id = req.params.id;
     const result = await db`SELECT * FROM articles WHERE art_id = ${art_id}`;
     const post = result[0];
-    res.render("article", { post });
+    res.render("article", { post, currentRoute: `/article/${art_id}` });
   } catch (error) {}
 });
 
@@ -56,7 +57,7 @@ router.post("/search", async (req, res) => {
     searchTerm = `%${searchTerm}%`;
     const data =
       await db`SELECT * FROM articles WHERE title iLIKE ${searchTerm} OR body iLIKE ${searchTerm}`;
-    res.render("search", { data });
+    res.render("search", { data, currentRoute: "/search" });
   } catch (error) {
     console.log(error);
   }
