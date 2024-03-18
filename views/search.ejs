@@ -2,15 +2,16 @@
   <h1>Search Results</h1>
 </div>
 <section class="articles">
-  <h2>Latest Posts</h2>
   <ul class="article-ul">
-    <% data.forEach(article => { %>
+    <% if (data.length === 0) { %>
+    <p>No articles found.</p>
+    <% } else { %> <% data.forEach(article => { %>
     <a href="/article/<%= article.art_id %>">
       <li>
         <span class="title"><%= article.title %></span>
         <span class="date"><%= article.createdat %></span>
       </li>
     </a>
-    <% }) %>
+    <% }) %> <% } %>
   </ul>
 </section>

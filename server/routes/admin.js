@@ -35,7 +35,7 @@ router.get("/admin", (req, res) => {
 // Dashboard Page Route
 router.get("/dashboard", authMiddleware, async (req, res) => {
   try {
-    const data = await db`SELECT * FROM articles ORDER BY createdat DESC`;
+    const data = await db`SELECT * FROM articles ORDER BY art_id DESC`;
     res.render("admin/dashboard", { data, layout: adminLayout });
   } catch (error) {
     console.log(error);
