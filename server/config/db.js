@@ -8,6 +8,10 @@ const db = pg({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
+  ssl: "require",
+  connection: {
+    options: `project=${process.env.ENDPOINT_ID}`,
+  },
 });
 
 export { db as db };
