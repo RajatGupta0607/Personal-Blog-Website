@@ -12,7 +12,7 @@ function authMiddleware(req, res, next) {
   const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({ message: "Unauthorized" });
+    return res.redirect("/admin");
   }
   try {
     const decoded = jwt.verify(token, jwtSecret);
@@ -23,8 +23,18 @@ function authMiddleware(req, res, next) {
   }
 }
 
+function authMiddleware2(req, res, next) {
+  const token = req.cookies.token;
+
+  if (!token) {
+    next();
+  } else {
+    return res.redirect("/dashboard");
+  }
+}
+
 // Admin Login Page Route
-router.get("/admin", (req, res) => {
+router.get("/admin", authMiddleware2, (req, res) => {
   try {
     res.render("admin/index", { layout: adminLayout });
   } catch (error) {
@@ -86,8 +96,11 @@ router.post("/admin", async (req, res) => {
 router.post("/add-article", async (req, res) => {
   try {
     const { title, body } = req.body;
+    console.log(body);
+    const bodyReplace = body.replace("     ", "<br />");
+    console.log(bodyReplace);
     const date = new Date();
-    await db`INSERT INTO articles(title, body, createdat, updatedat) VALUES (${title},${body},${date.toDateString()},${date.toDateString()})`;
+    await db`INSERT INTO articles(title, body, createdat, updatedat) VALUES (${title},${bodyReplace},${date.toDateString()},${date.toDateString()})`;
     res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
