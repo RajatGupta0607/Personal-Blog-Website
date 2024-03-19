@@ -5,7 +5,7 @@
 ## You need:
 
 - NodeJs
-- Database (PostgreSQL)
+- Database (PostgreSQL) pgAdmin 4
 
 ## Create .env file
 
