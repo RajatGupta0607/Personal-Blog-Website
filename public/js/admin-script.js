@@ -1,3 +1,7 @@
+window.addEventListener("load", () => {
+  loader.hidden = true;
+});
+
 const charLimit = document.querySelector("#charLimit");
 const artBody = document.querySelector("#body");
 const loader = document.querySelector(".overlay");
@@ -10,7 +14,3 @@ function countChar() {
 body.addEventListener("keyup", countChar);
 
 countChar();
-
-window.addEventListener("load", () => {
-  loader.hidden = true;
-});
