@@ -386,6 +386,7 @@ footer {
 
 .post > article {
   text-align: justify;
+  white-space: pre-wrap;
 }
 
 /* Admin Header */

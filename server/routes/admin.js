@@ -96,11 +96,8 @@ router.post("/admin", async (req, res) => {
 router.post("/add-article", async (req, res) => {
   try {
     const { title, body } = req.body;
-    console.log(body);
-    const bodyReplace = body.replace("     ", "<br />");
-    console.log(bodyReplace);
     const date = new Date();
-    await db`INSERT INTO articles(title, body, createdat, updatedat) VALUES (${title},${bodyReplace},${date.toDateString()},${date.toDateString()})`;
+    await db`INSERT INTO articles(title, body, createdat, updatedat) VALUES (${title},${body},${date.toDateString()},${date.toDateString()})`;
     res.redirect("/dashboard");
   } catch (error) {
     console.log(error);
